@@ -1,0 +1,36 @@
+area :
+funcbegin
+length = popparamater
+@t1 = length
+width = popparamater
+@t2 = width
+@t3 = @t1 * @t2
+x = @t3
+return x
+funcend
+main :
+funcbegin
+x = 3
+y = 5
+param x
+param y
+stackpointer +xxx
+call area , 2
+stackpointer -xxx
+@t4 = popparam
+ar = @t4
+param ar
+stackpointer +8
+param ar
+stackpointer -8
+funcend
+@t5 = __name__ == "__main__"
+if @t5 jump .Label30
+jump .Label34
+stackpointer +xxx
+call main , 0 
+.Label30 :
+
+stackpointer -xxx
+jump .Label34
+exit
